@@ -1,0 +1,159 @@
+* {
+	-moz-box-sizing: border-box; /* Firexfox */
+	-webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+	box-sizing: border-box; /* IE */
+}
+
+body {
+	background: url("../Images/background.jpg");
+	background-position: center;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/************************ headder ******************************/
+/**************************************************************/
+
+.headder {
+	height: 100px;
+	display: flex;
+	color: rgb(255, 255, 255);
+	font-size: 3.5rem;
+	font-family: Century Gothic;
+	justify-content: center;
+}
+
+.headder p {
+	margin: 10px 2px;
+	transition: font-size 120ms;
+}
+
+.headder p:hover {
+	cursor: pointer;
+	color: rgb(255, 136, 0);
+	font-size: 4rem;
+}
+
+/************************ Piano ********************************/
+/**************************************************************/
+
+.piano-container {
+	position: relative;
+	width: 85%;
+	margin: 0 auto;
+}
+
+.piano-top {
+	background-color: rgb(26, 28, 31);
+	height: 40px;
+}
+
+/************** White Keys ************/
+
+.piano-white {
+	height: 245px;
+	display: grid;
+	grid-template-columns: repeat(36, 1fr);
+}
+
+.white-key {
+	background-color: white;
+	border: 1px solid #ccc;
+	height: 100%;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 0 4px 3px rgba(0, 0, 0, 0.7);
+	transition: height 100ms;
+	display: flex;
+	justify-content: center;
+}
+
+.white-key:hover {
+	cursor: pointer;
+	box-shadow: inset 0 0 3px 0 grey;
+}
+
+.white-key-pressed {
+	height: 99.2%;
+	background: linear-gradient(#fff, #ddd);
+	box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.key-name {
+	position: absolute;
+	bottom: 5%;
+	color: #333;
+	font-size: 18px;
+	font-weight: 700;
+	font-family: Century Gothic;
+}
+
+/************** Black Keys ************/
+
+.piano-black {
+	display: flex;
+	position: absolute;
+	top: 40px;
+	width: 97.77%;
+}
+
+.black-key {
+	background: linear-gradient(#333, #000);
+	height: 150px;
+	width: 23px;
+	box-shadow: inset 0 -1px 5px -1px rgba(255, 255, 255, 0.7);
+	border-width: 0 2px 7px 1px;
+	border-color: black;
+	border-style: solid;
+	transition: border-width 80ms;
+	display: flex;
+	justify-content: center;
+}
+
+.black-key > .key-name {
+	color: rgb(240, 240, 240);
+	font-size: 14px;
+	font-weight: bold;
+	bottom: 7%;
+}
+
+.black-key-grp {
+	width: 20%;
+	position: relative;
+}
+
+.black-key.k1 {
+	position: absolute;
+	left: 8%;
+}
+
+.black-key.k2 {
+	position: absolute;
+	left: 23%;
+}
+
+.black-key.k3 {
+	position: absolute;
+	left: 49%;
+}
+
+.black-key.k4 {
+	position: absolute;
+	left: 64%;
+}
+
+.black-key.k5 {
+	position: absolute;
+	left: 79%;
+}
+
+.black-key:hover {
+	cursor: pointer;
+	box-shadow: inset 0 0 5px 0 #87cefa;
+}
+
+.black-key-pressed {
+	border-width: 1px !important;
+}
