@@ -1,7 +1,3 @@
-var pianoKey = document.querySelector(".piano-container");
-pianoKey.addEventListener("mousedown", pressKeyAndPlay);
-pianoKey.addEventListener("mouseup", removeKeyPressedClass);
-
 var allKeys = document.querySelectorAll(".white-key, .black-key");
 var keyboardStr =
 	"1234567890qwertyuiopasdfghjklzxcvbnm!@$%^*(QWETYIOPSDGHJLZCVB";
@@ -12,8 +8,15 @@ allKeys.forEach((pianoKey, i) => {
 	keyboardKeyToPianoKey[keyboardStr[i]] = pianoKey;
 });
 
+// Mouse Click Event
+var pianoKey = document.querySelector(".piano-container");
+pianoKey.addEventListener("mousedown", pressKeyAndPlay);
+
+// Keyboard Event
 window.addEventListener("keydown", keyBoardKeyPressed);
-window.addEventListener("keyup", keyBoardKeyReleased);
+
+// Undo Animation after playing
+allKeys.forEach(key=>addEventListener("transitionend", removeKeyPressedClass))
 
 /*******************************  Functions  ********************************/
 /***************************************************************************/
@@ -38,15 +41,9 @@ function addKeyPressedClass(el, keyColor) {
 }
 
 function removeKeyPressedClass(e) {
-	// when the number on the key is clicked then e.target = keyNum div so we need to set e.target to its parent
-	let el = e.target.parentElement.getAttribute("keyColor")
-		? e.target.parentElement
-		: e.target;
+	let el = e.target;
 	let keyColor = el.getAttribute("keyColor");
-
-	if (el.classList.contains(`${keyColor}-key-pressed`)) {
-		el.classList.remove(`${keyColor}-key-pressed`);
-	}
+	el.classList.remove(`${keyColor}-key-pressed`);
 }
 
 function playKeySound(keyColor, keyNum) {
@@ -62,12 +59,6 @@ function keyBoardKeyPressed(e) {
 	// this function expects an object with obj.target
 	if (keyboardStr.includes(e.key))
 		pressKeyAndPlay({ target: keyboardKeyToPianoKey[e.key] });
-}
-
-function keyBoardKeyReleased(e) {
-	// this function expects an object with obj.target
-	if (keyboardStr.includes(e.key))
-		removeKeyPressedClass({ target: keyboardKeyToPianoKey[e.key] });
 }
 
 // This function is copied from W3School FIXME: Figure out its functionality and Change it
