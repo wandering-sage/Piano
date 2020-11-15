@@ -48,10 +48,8 @@ function removeKeyPressedClass(e) {
 
 function playKeySound(keyColor, keyNum) {
 	// the sound inside the folder are saved as a1.mp3, a2.mp3, etc
-	let keySound = new Sound(
-		`./sounds/${keyColor == "white" ? "a" : "b"}${keyNum}.mp3`
-	);
-
+	let keySound = document.querySelector(`audio[data-key="${keyColor == "white" ? "a" : "b"}${keyNum}"]`);
+	keySound.currentTime = 0;
 	keySound.play();
 }
 
@@ -59,20 +57,4 @@ function keyBoardKeyPressed(e) {
 	// this function expects an object with obj.target
 	if (keyboardStr.includes(e.key))
 		pressKeyAndPlay({ target: keyboardKeyToPianoKey[e.key] });
-}
-
-// This function is copied from W3School FIXME: Figure out its functionality and Change it
-function Sound(src) {
-	this.sound = document.createElement("audio");
-	this.sound.src = src;
-	this.sound.setAttribute("preload", "auto");
-	this.sound.setAttribute("controls", "none");
-	this.sound.style.display = "none";
-	document.body.appendChild(this.sound);
-	this.play = function () {
-		this.sound.play();
-	};
-	this.stop = function () {
-		this.sound.pause();
-	};
 }
