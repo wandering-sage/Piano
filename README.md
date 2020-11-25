@@ -16,6 +16,11 @@
 </p>
 </div>
 
+
+## Project in Action
+
+<img src="src/Images/Screenshot.PNG">
+
 ## Getting Started
 - Clone this repo and unzip the folder wherever you want.
 - Launch your **Terminal** or **Command prompt**
@@ -35,6 +40,3 @@ npm start
 - You can click any key on the piano.
 - You can also use the keyboard, the corresponding key is mentioned on the piano.
 
-## Project in Action
-
-<img src="src/Images/Screenshot.PNG">
