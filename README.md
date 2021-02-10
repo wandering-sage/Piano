@@ -19,7 +19,7 @@
 
 ## Project in Action
 
-<img src="src/Images/Screenshot.PNG">
+<img src="Images/Screenshot.PNG">
 
 ## Getting Started
 - Clone this repo and unzip the folder wherever you want.
