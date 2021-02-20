@@ -1,4 +1,5 @@
 var autoBtn = document.querySelector(".auto-play");
+var loader = document.querySelector(".loader");
 var songSheet = "";
 var customSheet =
 	"s/f.el..uk.pl...k.l.q.s.th.l..o.g.o.&#13;&#10;8d..f..0g..ush..f..rad..y..o..s.a.";
@@ -21,8 +22,7 @@ var listOfSongs = [
 // fetches song to auto Play  from local directory
 getSong();
 
-const keyboardStr =
-	"1234567890qwertyuiopasdfghjklzxcvbnm!@$%^*(QWETYIOPSDGHJLZCVB";
+const keyboardStr = "1234567890qwertyuiopasdfghjklzxcvbnm!@$%^*(QWETYIOPSDGHJLZCVB";
 var white = document.querySelector(".piano-white");
 
 //Creating Piano keys
@@ -56,6 +56,9 @@ for (let i = 1; i <= 25; i++) {
 	appendAudio(`b${i}`);
 }
 
+// Setting up onLoad
+window.addEventListener("load", () => loader.classList.add("hidden"));
+
 // Mouse Click Event Piano
 var pianoKey = document.querySelector(".piano-container");
 pianoKey.addEventListener("mousedown", pressKeyAndPlay);
@@ -64,9 +67,7 @@ pianoKey.addEventListener("mousedown", pressKeyAndPlay);
 window.addEventListener("keydown", keyBoardKeyPressed);
 
 // Undo Animation after playing
-allKeys.forEach((key) =>
-	addEventListener("transitionend", removeKeyPressedClass)
-);
+allKeys.forEach((key) => addEventListener("transitionend", removeKeyPressedClass));
 
 document.querySelector(".auto-play").addEventListener("click", autoPlay);
 
@@ -77,9 +78,7 @@ document.querySelector(".list-btn").addEventListener("click", showAllSongs);
 
 function pressKeyAndPlay(e) {
 	// when the number on the key is clicked then e.target = keyNum div so we need to set e.target to its parent
-	let el = e.target.parentElement.getAttribute("keyColor")
-		? e.target.parentElement
-		: e.target;
+	let el = e.target.parentElement.getAttribute("keyColor") ? e.target.parentElement : e.target;
 	let keyColor = el.getAttribute("keyColor");
 	let keyNum = el.getAttribute("keyNum");
 
@@ -112,8 +111,7 @@ function playKeySound(keyColor, keyNum) {
 function keyBoardKeyPressed(e) {
 	let key = e.key ? e.key : e;
 	// this function expects an object with obj.target
-	if (keyboardStr.includes(key))
-		pressKeyAndPlay({ target: keyboardKeyToPianoKey[key] });
+	if (keyboardStr.includes(key)) pressKeyAndPlay({ target: keyboardKeyToPianoKey[key] });
 }
 
 function createWhiteKey(it) {
@@ -170,8 +168,8 @@ function autoPlay() {
 }
 
 async function playSong() {
-	if (songName=="Custom Song"){
-		songSheet = customSheet; 
+	if (songName == "Custom Song") {
+		songSheet = customSheet;
 	}
 	for (let x of songSheet) {
 		if (x == ".") {
@@ -265,29 +263,27 @@ function showAllSongs() {
 		songName = e.target.innerText;
 		if (songName == "Custom Song") {
 			customSong();
-		} 
-		else getSong();
+		} else getSong();
 	}
 }
 
 function customSong() {
 	var [popup, closePopup] = openPopup();
 	document.querySelector(".song-name").innerText = songName;
-	popup.style.backgroundColor = "rgb(210,210,210)"
+	popup.style.backgroundColor = "rgb(210,210,210)";
 
 	var grammar = document.createElement("div");
 	grammar.classList.add("grammar");
 	popup.appendChild(grammar);
 
 	var grHd = document.createElement("h2");
-	grHd.innerText = "Grammar!"
+	grHd.innerText = "Grammar!";
 	grammar.appendChild(grHd);
 
 	var lis = document.createElement("ul");
 	grammar.appendChild(lis);
 
-	lis.innerHTML = 
-	`<li>This song will be auto-saved when you close this popup</li>
+	lis.innerHTML = `<li>This song will be auto-saved when you close this popup</li>
 	<li>Dot (.) repersents delay btw two keys.</li>
 	<li>Forward slash (/) repersents half the delay of dot.</li>
 	<li>Consecutive keys will be pressed together.</li>
@@ -307,8 +303,6 @@ function customSong() {
 	textArea.spellcheck = false;
 	textArea.innerHTML = customSheet;
 	customSheet = textArea.value;
-	textArea.onchange = (e)=>customSheet = e.target.value;
+	textArea.onchange = (e) => (customSheet = e.target.value);
 	cnt.appendChild(textArea);
-
-	
 }

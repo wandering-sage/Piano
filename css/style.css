@@ -233,7 +233,7 @@ body {
 	/* pointer-events: none; */
 }
 
-.mid-cnt{
+.mid-cnt {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -248,7 +248,7 @@ body {
 .popup {
 	background: rgba(231, 231, 231, 0.8);
 	border-radius: 12px;
-	
+
 	font-size: 1.1em;
 	filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.4));
 	display: flex;
@@ -261,20 +261,20 @@ body {
 	padding: 25px;
 }
 
-.list-song{
+.list-song {
 	margin-top: 0;
 	font-family: "Muli";
 	cursor: pointer;
 }
-.list-song:hover{
+.list-song:hover {
 	text-shadow: 0 0 2px rgb(206, 110, 0);
 }
 
-.active-song{
+.active-song {
 	color: rgb(206, 110, 0);
 }
 
-.cus-song:hover{
+.cus-song:hover {
 	text-shadow: 0 0 3px rgb(0, 206, 93);
 }
 
@@ -298,23 +298,115 @@ body {
 	width: 33vw;
 	height: 50vh;
 	font-size: 1.3rem;
-	font-family: 'Inconsolata', monospace;
+	font-family: "Inconsolata", monospace;
 }
 
-h2{
+h2 {
 	text-align: center;
 	font-size: 2rem;
 	font-family: Century Gothic;
 	margin-top: 0;
 }
 
-.grammar{
+.grammar {
 	margin: auto 0;
 	margin-right: 2vw;
 	max-width: 20vw;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.grammar li{
+.grammar li {
 	margin-bottom: 6px;
+}
+
+/********************************--Loader--********************************/
+
+.loader {
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(77, 77, 77);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.loader.hidden {
+	animation: fadeOut 0.6s 0.8s ease-in forwards;
+}
+
+.load-text {
+	font-size: 2em;
+	font-family: "Muli";
+	color: rgb(141, 255, 118);
+}
+
+#wk1 {
+	animation: a1 1.6s ease-in-out infinite;
+}
+#wk2 {
+	animation: a2 1.6s 0.4s ease-in-out infinite;
+}
+#wk3 {
+	animation: a3 1.6s 0.8s ease-in-out infinite;
+}
+#wk4 {
+	animation: a4 1.6s 1.2s ease-in-out infinite;
+}
+body {
+	text-align: center;
+}
+@keyframes a1 {
+	0%,
+	33% {
+		fill: white;
+	}
+	5%,
+	22% {
+		fill: #44c5cb;
+	}
+}
+
+@keyframes a2 {
+	0%,
+	33% {
+		fill: white;
+	}
+	5%,
+	22% {
+		fill: #fce315;
+	}
+}
+
+@keyframes a3 {
+	0%,
+	33% {
+		fill: white;
+	}
+	5%,
+	22% {
+		fill: #f53d52;
+	}
+}
+
+@keyframes a4 {
+	0%,
+	33% {
+		fill: white;
+	}
+	5%,
+	22% {
+		fill: #ff9200;
+	}
+}
+
+@keyframes fadeOut {
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
 }
